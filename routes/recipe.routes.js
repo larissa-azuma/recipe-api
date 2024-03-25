@@ -1,29 +1,19 @@
 import { Router } from "express";
-import { MongoClient } from "mongodb";
+import { getRecipes, addRecipe,  upDateRecipe, getRecipe, deleteRecipe,  } from "../controllers/recipes.controller.js";
 
 
 const router = Router();
 
 //Define routes
-router.post('/recipes', async (req,res) => {
-    res.send ('Add recipe')
-});
+router.post('/',addRecipe);
 
-router.get('/recipes', async (req, res) => {
-   res.send ('Get all recipes')
-});
+router.get('/',getRecipes );
 
-router.get('/recipes/:id', (req, res) => {
-    res.send(`Get recipe with id: ${req.params.id}!`);
-});
+router.get('/:id',getRecipe );
 
-router.patch('/recipes/:id', (req, res) => {
-    res.send('Update a single recipe!');
-});
+router.patch('/:id',upDateRecipe );
 
-router.delete('/recipes/:id', (req, res) => {
-    res.send('Delete a single recipe!');
-});
+router.delete('/:id',deleteRecipe);
 
 //Export router
 export default router;
