@@ -22,9 +22,9 @@ app.use('/recipes', recipesRoutes);
 //Make database connection
 await mongoose.connect(process.env.MONGO_URI);
 
-
 //Listen to incoming request
-app.listen (4000,()=>{
-    console.log('Express app is running');
+const port= process.env.PORT ||4000;
+app.listen(4000,()=>{
+    console.log(`Express app is running on port ${port}`);
 });
 
